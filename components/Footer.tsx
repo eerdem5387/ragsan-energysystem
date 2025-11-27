@@ -192,7 +192,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-400">İstanbul, Türkiye</span>
+                <span className="text-gray-400">Selçuklu, Konya</span>
               </li>
               <li className="flex items-start space-x-3">
                 <MessageCircle className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />

@@ -57,7 +57,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Adres',
-      content: 'İstanbul, Türkiye',
+      content: 'Selçuklu, Konya',
       link: '#',
     },
     {
