@@ -147,16 +147,28 @@ const Header = ({ isScrolled }: HeaderProps) => {
               )}
             </motion.button>
 
-            <motion.a
-              href="tel:+905517124193"
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="flex items-center space-x-2 text-gray-700 dark:text-gray-300"
             >
-              <Phone className="w-5 h-5" />
-              <span className="font-medium">{phoneNumber1}</span>
-            </motion.a>
+              <Phone className="w-5 h-5 flex-shrink-0" />
+              <div className="flex flex-col">
+                <a
+                  href="tel:+905517124193"
+                  className="font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-sm leading-tight"
+                >
+                  {phoneNumber1}
+                </a>
+                <a
+                  href="tel:+905457715640"
+                  className="font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-sm leading-tight"
+                >
+                  {phoneNumber2}
+                </a>
+              </div>
+            </motion.div>
             <motion.a
               href={`https://wa.me/${whatsappNumber}`}
               target="_blank"
