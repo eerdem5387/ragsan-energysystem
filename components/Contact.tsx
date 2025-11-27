@@ -45,14 +45,14 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Telefon',
-      content: '+90 (555) 123 45 67',
-      link: 'tel:+905551234567',
+      content: '+90 (551) 712 41 93\n+90 (545) 771 56 40',
+      link: 'tel:+905517124193',
     },
     {
       icon: Mail,
       title: 'E-posta',
-      content: 'info@enerjisistemleri.com',
-      link: 'mailto:info@enerjisistemleri.com',
+      content: 'info@ragsanenergy.com',
+      link: 'mailto:info@ragsanenergy.com',
     },
     {
       icon: MapPin,
@@ -64,7 +64,7 @@ const Contact = () => {
       icon: MessageCircle,
       title: 'WhatsApp',
       content: 'WhatsApp ile İletişim',
-      link: 'https://wa.me/905551234567',
+      link: 'https://wa.me/905517124193',
       isExternal: true,
     },
   ];
@@ -141,7 +141,7 @@ const Contact = () => {
                   </motion.div>
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-white mb-1">{info.title}</h4>
-                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">{info.content}</p>
+                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 whitespace-pre-line">{info.content}</p>
                   </div>
                 </motion.a>
               ))}
@@ -218,7 +218,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none"
-                  placeholder="+90 (555) 123 45 67"
+                  placeholder="+90 (551) 712 41 93"
                 />
               </div>
 

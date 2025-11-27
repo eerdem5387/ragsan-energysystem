@@ -51,9 +51,9 @@ const WhyUs = () => {
   ];
 
   const stats = [
-    { number: '500+', labelKey: 'whyUs.stats.projects' },
-    { number: '1000+', labelKey: 'whyUs.stats.customers' },
-    { number: '15+', labelKey: 'whyUs.stats.experience' },
+    { number: '100', labelKey: 'whyUs.stats.projects' },
+    { number: '100', labelKey: 'whyUs.stats.customers' },
+    { number: '5+', labelKey: 'whyUs.stats.experience' },
     { number: '%98', labelKey: 'whyUs.stats.satisfaction' },
   ];
 

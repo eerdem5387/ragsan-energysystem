@@ -53,7 +53,9 @@ const Header = ({ isScrolled }: HeaderProps) => {
   };
 
   const whatsappNumber = '905517124193';
-  const phoneNumber = '+90 (551) 712 41 93';
+  const phoneNumber1 = '+90 (551) 712 41 93';
+  const phoneNumber2 = '+90 (545) 771 56 40';
+  const phoneNumber = phoneNumber1; // Primary phone number for display
 
   return (
     <header
@@ -146,14 +148,14 @@ const Header = ({ isScrolled }: HeaderProps) => {
             </motion.button>
 
             <motion.a
-              href={`tel:${phoneNumber.replace(/\s/g, '')}`}
+              href="tel:+905517124193"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               <Phone className="w-5 h-5" />
-              <span className="font-medium">{phoneNumber}</span>
+              <span className="font-medium">{phoneNumber1}</span>
             </motion.a>
             <motion.a
               href={`https://wa.me/${whatsappNumber}`}
@@ -227,11 +229,18 @@ const Header = ({ isScrolled }: HeaderProps) => {
               ))}
               <div className="pt-4 border-t border-gray-200 dark:border-gray-800 space-y-2">
                 <a
-                  href={`tel:${phoneNumber.replace(/\s/g, '')}`}
+                  href="tel:+905517124193"
                   className="flex items-center space-x-2 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 >
                   <Phone className="w-5 h-5" />
-                  <span className="font-medium">{phoneNumber}</span>
+                  <span className="font-medium">{phoneNumber1}</span>
+                </a>
+                <a
+                  href="tel:+905457715640"
+                  className="flex items-center space-x-2 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span className="font-medium">{phoneNumber2}</span>
                 </a>
                 <a
                   href={`https://wa.me/${whatsappNumber}`}

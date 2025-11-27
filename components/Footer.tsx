@@ -166,20 +166,28 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />
-                <a
-                  href="tel:+905551234567"
-                  className="text-gray-400 hover:text-primary-400 transition-colors"
-                >
-                  +90 (555) 123 45 67
-                </a>
+                <div className="flex flex-col space-y-1">
+                  <a
+                    href="tel:+905517124193"
+                    className="text-gray-400 hover:text-primary-400 transition-colors"
+                  >
+                    +90 (551) 712 41 93
+                  </a>
+                  <a
+                    href="tel:+905457715640"
+                    className="text-gray-400 hover:text-primary-400 transition-colors"
+                  >
+                    +90 (545) 771 56 40
+                  </a>
+                </div>
               </li>
               <li className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />
                 <a
-                  href="mailto:info@enerjisistemleri.com"
+                  href="mailto:info@ragsanenergy.com"
                   className="text-gray-400 hover:text-primary-400 transition-colors"
                 >
-                  info@enerjisistemleri.com
+                  info@ragsanenergy.com
                 </a>
               </li>
               <li className="flex items-start space-x-3">
@@ -189,7 +197,7 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MessageCircle className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />
                 <a
-                  href="https://wa.me/905551234567"
+                  href="https://wa.me/905517124193"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-primary-400 transition-colors"

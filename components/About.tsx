@@ -148,9 +148,9 @@ const About = () => {
                 className="grid grid-cols-2 gap-4 sm:gap-6"
               >
                 {[
-                  { number: '100+', labelKey: 'about.stats.projects' },
+                  { number: '100', labelKey: 'about.stats.projects' },
                   { number: '5+', labelKey: 'about.stats.experience' },
-                  { number: '100+', labelKey: 'about.stats.customers' },
+                  { number: '100', labelKey: 'about.stats.customers' },
                   { number: '24/7', labelKey: 'about.stats.support' },
                 ].map((stat, index) => (
                   <motion.div
