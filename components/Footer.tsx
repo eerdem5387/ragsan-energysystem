@@ -3,22 +3,25 @@
 import { motion } from 'framer-motion';
 import { MessageCircle, Phone, Mail, MapPin, Instagram, Linkedin } from 'lucide-react';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   const quickLinks = [
-    { name: 'Hakkımızda', href: '#hakkimizda' },
-    { name: 'Hizmetler', href: '#hizmetler' },
-    { name: 'Neden Biz?', href: '#neden-biz' },
-    { name: 'Projeler', href: '#projeler' },
-    { name: 'İletişim', href: '#iletisim' },
+    { key: 'nav.about', href: '#hakkimizda' },
+    { key: 'nav.services', href: '#hizmetler' },
+    { key: 'nav.whyUs', href: '#neden-biz' },
+    { key: 'nav.projects', href: '#projeler' },
+    { key: 'nav.contact', href: '#iletisim' },
   ];
 
   const services = [
-    'Güneş Paneli Sistemleri',
-    'Rüzgar Türbini Sistemleri',
-    'Hibrit Enerji Sistemleri',
-    'Kurulum ve Bakım',
-    'Enerji Danışmanlığı',
+    'services.solar.title',
+    'services.wind.title',
+    'services.hybrid.title',
+    'services.installation.title',
+    'services.consulting.title',
   ];
 
   // X (Twitter) icon component
@@ -84,7 +87,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-400 mb-4 leading-relaxed">
-              Yenilenebilir enerji çözümleri ile sürdürülebilir gelecek için çalışıyoruz.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -113,16 +116,16 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h3 className="text-white font-bold text-lg mb-4">Hızlı Linkler</h3>
+            <h3 className="text-white font-bold text-lg mb-4">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
-                <li key={link.name}>
+                <li key={link.key}>
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className="text-gray-400 hover:text-primary-400 transition-colors"
                   >
-                    {link.name}
+                    {t(link.key)}
                   </a>
                 </li>
               ))}
@@ -136,16 +139,16 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-white font-bold text-lg mb-4">Hizmetlerimiz</h3>
+            <h3 className="text-white font-bold text-lg mb-4">{t('footer.services')}</h3>
             <ul className="space-y-2">
-              {services.map((service) => (
-                <li key={service}>
+              {services.map((serviceKey) => (
+                <li key={serviceKey}>
                   <a
                     href="#hizmetler"
                     onClick={(e) => handleNavClick(e, '#hizmetler')}
                     className="text-gray-400 hover:text-primary-400 transition-colors"
                   >
-                    {service}
+                    {t(serviceKey)}
                   </a>
                 </li>
               ))}
@@ -159,7 +162,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h3 className="text-white font-bold text-lg mb-4">İletişim</h3>
+            <h3 className="text-white font-bold text-lg mb-4">{t('footer.contact')}</h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />
@@ -191,7 +194,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-primary-400 transition-colors"
                 >
-                  WhatsApp ile İletişim
+                  {t('footer.whatsapp')}
                 </a>
               </li>
             </ul>
@@ -201,14 +204,14 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Framio Agency. Tüm hakları saklıdır.
+              © {new Date().getFullYear()} RAGSAN Renewable Energy Systems. {t('footer.copyright')}
             </p>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
-                Gizlilik Politikası
+                {t('footer.privacy')}
               </a>
               <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
-                Kullanım Koşulları
+                {t('footer.terms')}
               </a>
             </div>
           </div>

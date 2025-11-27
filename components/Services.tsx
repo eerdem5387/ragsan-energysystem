@@ -3,87 +3,83 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Sun, Wind, Zap, Settings, Shield, TrendingUp } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Services = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const { t } = useLanguage();
 
   const services = [
     {
       icon: Sun,
-      title: 'Güneş Paneli Sistemleri',
-      description:
-        'Yüksek verimli güneş panelleri ile elektrik üretimi. Ev, iş yeri ve endüstriyel uygulamalar için özel çözümler.',
-      features: [
-        'Monokristal ve Polikristal seçenekleri',
-        '25 yıl garanti',
-        'Yüksek verimlilik oranları',
-        'Kolay kurulum ve bakım',
+      titleKey: 'services.solar.title',
+      descKey: 'services.solar.desc',
+      featureKeys: [
+        'services.solar.feature1',
+        'services.solar.feature2',
+        'services.solar.feature3',
+        'services.solar.feature4',
       ],
       color: 'from-accent-500 to-accent-700',
     },
     {
       icon: Wind,
-      title: 'Rüzgar Türbini Sistemleri',
-      description:
-        'Modern rüzgar türbinleri ile sürekli enerji üretimi. Küçük ve büyük ölçekli projeler için uygun çözümler.',
-      features: [
-        'Düşük ve yüksek rüzgar hızlarında çalışma',
-        'Sessiz ve verimli tasarım',
-        'Uzun ömürlü yapı',
-        'Otomatik rüzgar yönü takibi',
+      titleKey: 'services.wind.title',
+      descKey: 'services.wind.desc',
+      featureKeys: [
+        'services.wind.feature1',
+        'services.wind.feature2',
+        'services.wind.feature3',
+        'services.wind.feature4',
       ],
       color: 'from-primary-500 to-primary-700',
     },
     {
       icon: Zap,
-      title: 'Hibrit Enerji Sistemleri',
-      description:
-        'Güneş ve rüzgar enerjisini birleştiren akıllı hibrit sistemler. Kesintisiz enerji sağlama.',
-      features: [
-        'Güneş + Rüzgar kombinasyonu',
-        'Akıllı enerji yönetimi',
-        'Batarya depolama seçenekleri',
-        '7/24 enerji üretimi',
+      titleKey: 'services.hybrid.title',
+      descKey: 'services.hybrid.desc',
+      featureKeys: [
+        'services.hybrid.feature1',
+        'services.hybrid.feature2',
+        'services.hybrid.feature3',
+        'services.hybrid.feature4',
       ],
       color: 'from-purple-500 to-purple-700',
     },
     {
       icon: Settings,
-      title: 'Kurulum ve Bakım',
-      description:
-        'Profesyonel kurulum ekibimiz ve düzenli bakım hizmetlerimiz ile sistemlerinizin optimal çalışmasını garanti ediyoruz.',
-      features: [
-        'Uzman kurulum ekibi',
-        'Düzenli bakım programları',
-        '7/24 teknik destek',
-        'Uzaktan izleme sistemleri',
+      titleKey: 'services.installation.title',
+      descKey: 'services.installation.desc',
+      featureKeys: [
+        'services.installation.feature1',
+        'services.installation.feature2',
+        'services.installation.feature3',
+        'services.installation.feature4',
       ],
       color: 'from-green-500 to-green-700',
     },
     {
       icon: Shield,
-      title: 'Garanti ve Sigorta',
-      description:
-        'Tüm ürünlerimiz için kapsamlı garanti ve sigorta seçenekleri. Güvenli yatırım garantisi.',
-      features: [
-        'Ürün garantisi',
-        'Performans garantisi',
-        'Sigorta kapsamı',
-        'Hızlı yedek parça temini',
+      titleKey: 'services.warranty.title',
+      descKey: 'services.warranty.desc',
+      featureKeys: [
+        'services.warranty.feature1',
+        'services.warranty.feature2',
+        'services.warranty.feature3',
+        'services.warranty.feature4',
       ],
       color: 'from-blue-500 to-blue-700',
     },
     {
       icon: TrendingUp,
-      title: 'Enerji Danışmanlığı',
-      description:
-        'Enerji ihtiyaçlarınızı analiz ederek en uygun çözümü sunuyoruz. ROI hesaplamaları ve finansman seçenekleri.',
-      features: [
-        'Detaylı enerji analizi',
-        'ROI hesaplamaları',
-        'Finansman seçenekleri',
-        'Proje yönetimi',
+      titleKey: 'services.consulting.title',
+      descKey: 'services.consulting.desc',
+      featureKeys: [
+        'services.consulting.feature1',
+        'services.consulting.feature2',
+        'services.consulting.feature3',
+        'services.consulting.feature4',
       ],
       color: 'from-orange-500 to-orange-700',
     },
@@ -129,7 +125,7 @@ const Services = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Hizmetlerimiz
+            {t('services.title')}
           </motion.h2>
           <motion.div
             className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-700 mx-auto mb-6"
@@ -139,8 +135,7 @@ const Services = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           />
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-            Yenilenebilir enerji alanında kapsamlı hizmetler sunuyoruz. İhtiyaçlarınıza özel
-            çözümler üretiyoruz.
+            {t('services.subtitle')}
           </p>
         </motion.div>
 
@@ -153,7 +148,7 @@ const Services = () => {
         >
           {services.map((service, index) => (
             <motion.div
-              key={service.title}
+              key={service.titleKey}
               variants={itemVariants}
               whileHover={{ y: -10, scale: 1.02, rotateY: 5 }}
               className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-gray-100 dark:border-gray-700"
@@ -182,13 +177,13 @@ const Services = () => {
               </motion.div>
               <div className="p-6">
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                  {service.title}
+                  {t(service.titleKey)}
                 </h3>
                 <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                  {service.description}
+                  {t(service.descKey)}
                 </p>
                 <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
+                  {service.featureKeys.map((featureKey, idx) => (
                     <motion.li
                       key={idx}
                       initial={{ opacity: 0, x: -10 }}
@@ -204,7 +199,7 @@ const Services = () => {
                       >
                         ✓
                       </motion.span>
-                      <span>{feature}</span>
+                      <span>{t(featureKey)}</span>
                     </motion.li>
                   ))}
                 </ul>

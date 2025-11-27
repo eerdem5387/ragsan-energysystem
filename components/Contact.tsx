@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, MessageCircle, Send } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -84,7 +86,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            İletişim
+            {t('contact.title')}
           </motion.h2>
           <motion.div
             className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-700 mx-auto mb-6"
@@ -94,8 +96,7 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           />
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-            Sorularınız, önerileriniz veya proje talepleriniz için bizimle iletişime geçin.
-            Size en kısa sürede dönüş yapacağız.
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -110,10 +111,10 @@ const Contact = () => {
           >
             <div>
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                İletişim Bilgilerimiz
+                {t('contact.info.title')}
               </h3>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-8">
-                Size yardımcı olmak için buradayız. Aşağıdaki kanallardan bize ulaşabilirsiniz.
+                {t('contact.info.subtitle')}
               </p>
             </div>
 
@@ -154,10 +155,10 @@ const Contact = () => {
               whileHover={{ scale: 1.02, y: -5 }}
               className="bg-gradient-to-br from-primary-500 to-primary-700 dark:from-primary-600 dark:to-primary-800 rounded-2xl p-6 text-white shadow-lg"
             >
-              <h4 className="text-lg sm:text-xl font-bold mb-2">Çalışma Saatleri</h4>
-              <p className="mb-1 text-sm sm:text-base">Pazartesi - Cuma: 09:00 - 18:00</p>
-              <p className="mb-1 text-sm sm:text-base">Cumartesi: 10:00 - 16:00</p>
-              <p className="text-sm sm:text-base">Pazar: Kapalı</p>
+              <h4 className="text-lg sm:text-xl font-bold mb-2">{t('contact.hours.title')}</h4>
+              <p className="mb-1 text-sm sm:text-base">{t('contact.hours.weekday')}</p>
+              <p className="mb-1 text-sm sm:text-base">{t('contact.hours.saturday')}</p>
+              <p className="text-sm sm:text-base">{t('contact.hours.sunday')}</p>
             </motion.div>
           </motion.div>
 
@@ -170,12 +171,12 @@ const Contact = () => {
             className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700"
           >
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Bize Mesaj Gönderin
+              {t('contact.form.title')}
             </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Ad Soyad
+                  {t('contact.form.name')}
                 </label>
                 <input
                   type="text"
@@ -185,13 +186,13 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none"
-                  placeholder="Adınız ve soyadınız"
+                  placeholder={t('contact.form.name')}
                 />
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  E-posta
+                  {t('contact.form.email')}
                 </label>
                 <input
                   type="email"
@@ -207,7 +208,7 @@ const Contact = () => {
 
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Telefon
+                  {t('contact.form.phone')}
                 </label>
                 <input
                   type="tel"
@@ -223,7 +224,7 @@ const Contact = () => {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Mesajınız
+                  {t('contact.form.message')}
                 </label>
                 <textarea
                   id="message"
@@ -233,7 +234,7 @@ const Contact = () => {
                   required
                   rows={5}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none resize-none"
-                  placeholder="Mesajınızı buraya yazın..."
+                  placeholder={t('contact.form.message')}
                 />
               </div>
 
@@ -247,17 +248,17 @@ const Contact = () => {
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>Gönderiliyor...</span>
+                    <span>{t('contact.form.sending')}</span>
                   </>
                 ) : submitStatus === 'success' ? (
                   <>
                     <span>✓</span>
-                    <span>Mesaj Gönderildi!</span>
+                    <span>{t('contact.form.success')}</span>
                   </>
                 ) : (
                   <>
                     <Send className="w-5 h-5" />
-                    <span>Mesaj Gönder</span>
+                    <span>{t('contact.form.send')}</span>
                   </>
                 )}
               </motion.button>
@@ -268,7 +269,7 @@ const Contact = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg text-green-800 dark:text-green-300"
                 >
-                  Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
+                  {t('contact.form.success.message')}
                 </motion.div>
               )}
             </form>

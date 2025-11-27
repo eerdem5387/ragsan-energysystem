@@ -4,10 +4,12 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ExternalLink, MapPin, Calendar } from 'lucide-react';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const { t } = useLanguage();
 
   const projects = [
     {
@@ -18,7 +20,7 @@ const Projects = () => {
         'Villa için özel tasarlanmış güneş enerjisi sistemi. Estetik ve verimlilik bir arada.',
       image: '/images/bağ-villa-ges.jpg',
       type: 'Güneş Paneli',
-      capacity: '50 kW',
+      capacity: '25 kW',
     },
     {
       title: 'Bağ Villa Rüzgar Enerjisi Sistemi',
@@ -28,7 +30,7 @@ const Projects = () => {
         'Villa için küçük ölçekli rüzgar türbini sistemi. Sessiz ve verimli çalışma.',
       image: '/images/bağ-villa-res.png',
       type: 'Rüzgar Türbini',
-      capacity: '20 kW',
+      capacity: '25 kW',
     },
     {
       title: 'Enerji Üretim Santrali GES',
@@ -38,7 +40,7 @@ const Projects = () => {
         'Büyük ölçekli güneş enerjisi santrali. Yüksek kapasiteli ve verimli enerji üretimi.',
       image: '/images/enerji-üretim-santrali-ges.jpg',
       type: 'Güneş Paneli',
-      capacity: '5 MW',
+      capacity: '2 MW',
     },
     {
       title: 'Fabrika Güneş Enerjisi Sistemi',
@@ -48,7 +50,7 @@ const Projects = () => {
         'Endüstriyel tesis için güneş paneli kurulumu. Çatı ve açık alan kullanımı.',
       image: '/images/fabrika-ges.jpg',
       type: 'Güneş Paneli',
-      capacity: '2 MW',
+      capacity: '1 MW',
     },
     {
       title: 'Fabrika Rüzgar Enerjisi Sistemi',
@@ -142,7 +144,7 @@ const Projects = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Tamamlanan Projelerimiz
+            {t('projects.title')}
           </motion.h2>
           <motion.div
             className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-700 mx-auto mb-6"
@@ -152,8 +154,7 @@ const Projects = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           />
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-            Başarıyla tamamladığımız projelerden örnekler. Her proje, kalite ve müşteri
-            memnuniyeti odaklı yaklaşımımızın bir yansımasıdır.
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
@@ -221,7 +222,7 @@ const Projects = () => {
                 </p>
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
                   <div>
-                    <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Kapasite</div>
+                    <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{t('projects.capacity')}</div>
                     <motion.div
                       className="text-lg sm:text-xl font-bold text-primary-600 dark:text-primary-400"
                       whileHover={{ scale: 1.1 }}
@@ -229,14 +230,15 @@ const Projects = () => {
                       {project.capacity}
                     </motion.div>
                   </div>
-                  <motion.button
+                  {/* Detaylar butonu şimdilik kaldırıldı - gelecekte proje detayları hazır olduğunda aktif edilecek */}
+                  {/* <motion.button
                     whileHover={{ scale: 1.1, x: 5 }}
                     whileTap={{ scale: 0.9 }}
                     className="flex items-center space-x-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-colors text-sm sm:text-base"
                   >
-                    <span>Detaylar</span>
+                    <span>{t('projects.details')}</span>
                     <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
-                  </motion.button>
+                  </motion.button> */}
                 </div>
               </div>
             </motion.div>
@@ -269,7 +271,7 @@ const Projects = () => {
             whileTap={{ scale: 0.95 }}
             className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-full font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-200"
           >
-            Projenizi Planlayalım
+            {t('projects.cta')}
           </motion.a>
         </motion.div>
       </div>

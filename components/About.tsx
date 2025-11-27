@@ -3,31 +3,33 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Users, Award, Target, Leaf } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const { t } = useLanguage();
 
   const features = [
     {
       icon: Users,
-      title: 'Uzman Ekip',
-      description: 'Yılların deneyimine sahip profesyonel ekibimizle hizmetinizdeyiz.',
+      titleKey: 'about.features.expert',
+      descKey: 'about.features.expert.desc',
     },
     {
       icon: Award,
-      title: 'Kalite Garantisi',
-      description: 'Tüm ürünlerimiz uluslararası standartlarda kalite sertifikalarına sahiptir.',
+      titleKey: 'about.features.quality',
+      descKey: 'about.features.quality.desc',
     },
     {
       icon: Target,
-      title: 'Hedef Odaklı',
-      description: 'Müşteri memnuniyetini ön planda tutarak çözümler üretiyoruz.',
+      titleKey: 'about.features.target',
+      descKey: 'about.features.target.desc',
     },
     {
       icon: Leaf,
-      title: 'Sürdürülebilirlik',
-      description: 'Çevreye duyarlı, sürdürülebilir enerji çözümleri sunuyoruz.',
+      titleKey: 'about.features.sustainability',
+      descKey: 'about.features.sustainability.desc',
     },
   ];
 
@@ -70,7 +72,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Hakkımızda
+            {t('about.title')}
           </motion.h2>
           <motion.div
             className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-700 mx-auto mb-6"
@@ -80,8 +82,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           />
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-            RAGSAN Renewable Energy Systems olarak, yenilenebilir enerji alanında öncü bir firma olarak
-            müşterilerimize en kaliteli güneş paneli ve rüzgar türbini çözümlerini sunuyoruz.
+            {t('about.subtitle')}
           </p>
         </motion.div>
 
@@ -100,7 +101,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Geleceği Şekillendiriyoruz
+              {t('about.heading')}
             </motion.h3>
             <motion.p
               className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm sm:text-base"
@@ -109,9 +110,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Yılların deneyimi ve teknolojik yenilikleri bir araya getirerek, sürdürülebilir
-              enerji çözümleri sunuyoruz. Güneş panelleri ve rüzgar türbinleri konusunda
-              uzmanlaşmış ekibimiz, her projeyi titizlikle planlar ve hayata geçirir.
+              {t('about.text1')}
             </motion.p>
             <motion.p
               className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm sm:text-base"
@@ -120,8 +119,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Müşterilerimizin enerji ihtiyaçlarını analiz ederek, en uygun ve verimli çözümleri
-              öneriyoruz. Kalite, güvenilirlik ve müşteri memnuniyeti bizim için önceliktir.
+              {t('about.text2')}
             </motion.p>
             <motion.p
               className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base"
@@ -130,8 +128,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Doğaya saygılı, ekonomik ve uzun ömürlü enerji sistemleri ile hem çevrenizi
-              koruyun hem de enerji maliyetlerinizi düşürün.
+              {t('about.text3')}
             </motion.p>
           </motion.div>
 
@@ -151,13 +148,13 @@ const About = () => {
                 className="grid grid-cols-2 gap-4 sm:gap-6"
               >
                 {[
-                  { number: '500+', label: 'Tamamlanan Proje' },
-                  { number: '15+', label: 'Yıllık Deneyim' },
-                  { number: '1000+', label: 'Mutlu Müşteri' },
-                  { number: '24/7', label: 'Destek Hizmeti' },
+                  { number: '100+', labelKey: 'about.stats.projects' },
+                  { number: '5+', labelKey: 'about.stats.experience' },
+                  { number: '100+', labelKey: 'about.stats.customers' },
+                  { number: '24/7', labelKey: 'about.stats.support' },
                 ].map((stat, index) => (
                   <motion.div
-                    key={stat.label}
+                    key={stat.labelKey}
                     variants={itemVariants}
                     whileHover={{ scale: 1.05, y: -5 }}
                     className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-lg text-center border border-gray-100 dark:border-gray-700"
@@ -171,7 +168,7 @@ const About = () => {
                     >
                       {stat.number}
                     </motion.div>
-                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">{stat.label}</div>
+                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">{t(stat.labelKey)}</div>
                   </motion.div>
                 ))}
               </motion.div>
@@ -188,7 +185,7 @@ const About = () => {
         >
           {features.map((feature, index) => (
             <motion.div
-              key={feature.title}
+              key={feature.titleKey}
               variants={itemVariants}
               whileHover={{ y: -8, scale: 1.02 }}
               className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
@@ -200,8 +197,8 @@ const About = () => {
               >
                 <feature.icon className="w-7 h-7 text-white" />
               </motion.div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{feature.title}</h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{feature.description}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{t(feature.titleKey)}</h3>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{t(feature.descKey)}</p>
             </motion.div>
           ))}
         </motion.div>

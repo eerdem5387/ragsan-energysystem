@@ -2,8 +2,10 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sun, Wind, Zap, Battery, Leaf, Sparkles } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 300], [0, 200]);
   const y2 = useTransform(scrollY, [0, 300], [0, -200]);
@@ -212,7 +214,7 @@ const Hero = () => {
               backgroundSize: '200% auto',
             }}
           >
-            Yenilenebilir Enerji
+            {t('hero.title1')}
           </motion.span>
           <motion.span
             className="text-gray-800 dark:text-gray-200 block"
@@ -220,7 +222,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Geleceğiniz İçin
+            {t('hero.title2')}
           </motion.span>
         </motion.h1>
 
@@ -230,9 +232,9 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
           className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4"
         >
-          Güneş panelleri ve rüzgar türbinleri ile sürdürülebilir enerji çözümleri.
+          {t('hero.description1')}
           <br className="hidden sm:block" />
-          <span className="block sm:inline"> Doğaya saygılı, ekonomik ve verimli enerji sistemleri.</span>
+          <span className="block sm:inline"> {t('hero.description2')}</span>
         </motion.p>
 
         <motion.div
@@ -260,7 +262,7 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-full font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-200 w-full sm:w-auto"
           >
-            Hemen İletişime Geçin
+            {t('hero.cta1')}
           </motion.a>
           <motion.a
             href="#hizmetler"
@@ -281,7 +283,7 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             className="px-6 sm:px-8 py-3 sm:py-4 bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 rounded-full font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-primary-600 dark:border-primary-400 w-full sm:w-auto"
           >
-            Hizmetlerimizi Keşfedin
+            {t('hero.cta2')}
           </motion.a>
         </motion.div>
 

@@ -10,55 +10,51 @@ import {
   Award,
   Globe,
 } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const WhyUs = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const { t } = useLanguage();
 
   const advantages = [
     {
       icon: Award,
-      title: 'Kaliteli Ürünler',
-      description:
-        'Sadece en iyi markaların ürünlerini sunuyoruz. Tüm ürünlerimiz uluslararası standartlarda sertifikalıdır.',
+      titleKey: 'whyUs.advantages.quality.title',
+      descKey: 'whyUs.advantages.quality.desc',
     },
     {
       icon: DollarSign,
-      title: 'Uygun Fiyatlar',
-      description:
-        'Rekabetçi fiyatlar ve esnek ödeme seçenekleri. Uzun vadede enerji maliyetlerinizi önemli ölçüde düşürür.',
+      titleKey: 'whyUs.advantages.price.title',
+      descKey: 'whyUs.advantages.price.desc',
     },
     {
       icon: Clock,
-      title: 'Hızlı Kurulum',
-      description:
-        'Deneyimli ekibimiz sayesinde projelerinizi zamanında ve sorunsuz bir şekilde tamamlıyoruz.',
+      titleKey: 'whyUs.advantages.fast.title',
+      descKey: 'whyUs.advantages.fast.desc',
     },
     {
       icon: Headphones,
-      title: '7/24 Destek',
-      description:
-        'Kurulum sonrası da yanınızdayız. Teknik destek ve bakım hizmetlerimiz her zaman hazır.',
+      titleKey: 'whyUs.advantages.support.title',
+      descKey: 'whyUs.advantages.support.desc',
     },
     {
       icon: CheckCircle,
-      title: 'Garanti',
-      description:
-        'Tüm ürünlerimiz için kapsamlı garanti. Performans garantisi ile güvenli yatırım.',
+      titleKey: 'whyUs.advantages.warranty.title',
+      descKey: 'whyUs.advantages.warranty.desc',
     },
     {
       icon: Globe,
-      title: 'Çevre Dostu',
-      description:
-        'Sürdürülebilir enerji çözümleri ile doğaya katkıda bulunun. Karbon ayak izinizi azaltın.',
+      titleKey: 'whyUs.advantages.environment.title',
+      descKey: 'whyUs.advantages.environment.desc',
     },
   ];
 
   const stats = [
-    { number: '500+', label: 'Tamamlanan Proje' },
-    { number: '1000+', label: 'Mutlu Müşteri' },
-    { number: '15+', label: 'Yıllık Deneyim' },
-    { number: '%98', label: 'Müşteri Memnuniyeti' },
+    { number: '500+', labelKey: 'whyUs.stats.projects' },
+    { number: '1000+', labelKey: 'whyUs.stats.customers' },
+    { number: '15+', labelKey: 'whyUs.stats.experience' },
+    { number: '%98', labelKey: 'whyUs.stats.satisfaction' },
   ];
 
   const containerVariants = {
@@ -100,7 +96,7 @@ const WhyUs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Neden Bizi Seçmelisiniz?
+            {t('whyUs.title')}
           </motion.h2>
           <motion.div
             className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-700 mx-auto mb-6"
@@ -110,8 +106,7 @@ const WhyUs = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           />
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-            Yenilenebilir enerji alanında güvenilir çözüm ortağınız. Kalite, hizmet ve
-            müşteri memnuniyeti odaklı yaklaşımımızla fark yaratıyoruz.
+            {t('whyUs.subtitle')}
           </p>
         </motion.div>
 
@@ -125,7 +120,7 @@ const WhyUs = () => {
         >
           {stats.map((stat, index) => (
             <motion.div
-              key={stat.label}
+              key={stat.labelKey}
               variants={itemVariants}
               whileHover={{ scale: 1.1, y: -5, rotate: [0, -5, 5, 0] }}
               className="bg-gradient-to-br from-primary-500 to-primary-700 dark:from-primary-600 dark:to-primary-800 rounded-2xl p-4 sm:p-6 text-center text-white shadow-lg"
@@ -139,7 +134,7 @@ const WhyUs = () => {
               >
                 {stat.number}
               </motion.div>
-              <div className="text-xs sm:text-sm md:text-base opacity-90">{stat.label}</div>
+              <div className="text-xs sm:text-sm md:text-base opacity-90">{t(stat.labelKey)}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -154,7 +149,7 @@ const WhyUs = () => {
         >
           {advantages.map((advantage, index) => (
             <motion.div
-              key={advantage.title}
+              key={advantage.titleKey}
               variants={itemVariants}
               whileHover={{ y: -8, scale: 1.02 }}
               className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
@@ -170,8 +165,8 @@ const WhyUs = () => {
               >
                 <advantage.icon className="w-7 h-7 text-primary-600 dark:text-primary-400" />
               </motion.div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3">{advantage.title}</h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{advantage.description}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3">{t(advantage.titleKey)}</h3>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{t(advantage.descKey)}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -189,11 +184,10 @@ const WhyUs = () => {
             animate={{ scale: [1, 1.02, 1] }}
             transition={{ duration: 3, repeat: Infinity }}
           >
-            Hemen Başlayalım
+            {t('whyUs.cta.title')}
           </motion.h3>
           <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90 max-w-2xl mx-auto px-4">
-            Yenilenebilir enerji yolculuğunuza bugün başlayın. Ücretsiz keşif ve teklif için
-            bizimle iletişime geçin.
+            {t('whyUs.cta.subtitle')}
           </p>
           <motion.a
             href="#iletisim"
@@ -214,7 +208,7 @@ const WhyUs = () => {
             whileTap={{ scale: 0.95 }}
             className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 rounded-full font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-200"
           >
-            Ücretsiz Teklif Alın
+            {t('whyUs.cta.button')}
           </motion.a>
         </motion.div>
       </div>
